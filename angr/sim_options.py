@@ -151,8 +151,9 @@ REVERSE_MEMORY_HASH_MAP = "REVERSE_MEMORY_HASH_MAP"
 # This enables tracking of which bytes in the state are symbolic
 MEMORY_SYMBOLIC_BYTES_MAP = "MEMORY_SYMBOLIC_BYTES_MAP"
 
-# this makes s_run() copy states
-COW_STATES = "COW_STATES"
+# this makes engine copy states
+COPY_STATES = "COPY_STATES"
+COW_STATES = COPY_STATES
 
 # this replaces calls with an unconstraining of the return register
 CALLLESS = "CALLLESS"
@@ -294,7 +295,7 @@ CGC_NON_BLOCKING_FDS = 'CGC_NON_BLOCKING_FDS'
 _g = globals().copy()
 for k, v in _g.items():
     if all([ char in string.ascii_uppercase + "_" + string.digits for char in k ]) and type(v) is str:
-        if k in ("UNKNOWN_FILES_HAVE_EOF", "CGC_ZERO_FILL_UNCONSTRAINED_MEMORY"):
+        if k in ("UNKNOWN_FILES_HAVE_EOF", "CGC_ZERO_FILL_UNCONSTRAINED_MEMORY", "COW_STATES"):
             # UNKNOWN_FILES_HAVE_EOF == FILES_HAVE_EOF
             # CGC_ZERO_FILL_UNCONSTRAINED_MEMORY == ZERO_FILL_UNCONSTRAINED_MEMORY
             continue
